@@ -1,4 +1,4 @@
-# Experiments with Data Structres from CLRS
+# Experiments with Data Structures from CLRS
 
 ### Tried to implement DS from CLRS using C++
 #### Edit
