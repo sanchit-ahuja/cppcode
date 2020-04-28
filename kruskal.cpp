@@ -2,21 +2,34 @@
 using namespace std;
 typedef  pair<int, int> iPair; 
 
-struct Graph
-{
-    int V,E;
+// struct Graph
+// {
+//     int V,E;
+//     vector<pair<int,pair<int,int>>> edges;
+//     Graph(int V,int E)
+//     {
+//         this->V = V;
+//         this->E = E;
+//     }
+//     void addEdge(int u,int v, int w)
+//     {
+//         edges.push_back({w,{u,v}});
+//     }
+//     int kruskalMST();
+
+// };
+
+class Graph {
+   public: int V,E;
     vector<pair<int,pair<int,int>>> edges;
-    Graph(int V,int E)
-    {
+    Graph(int V, int E){
         this->V = V;
-        this->E = E;
+        this->E  = E;
     }
-    void addEdge(int u,int v, int w)
-    {
+    void addEdge(int u, int v, int w){
         edges.push_back({w,{u,v}});
     }
     int kruskalMST();
-
 };
 
 struct Disjoint
