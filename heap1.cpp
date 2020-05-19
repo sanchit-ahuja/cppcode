@@ -1,55 +1,63 @@
 #include<bits/stdc++.h>
 using namespace std;
+ 
+#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define endl "\n"
+#define ll long long
+#define pii pair<int,int>
+#define all(x) begin(x), end(x)
+#define loop(i,n) for(int i=0; i<n; i++)
+#define rep(i,a,b,c) for(int i=a; i<b; i+=c)
+#define brep(i,a,b,c) for(int i=a; i>b; i-=c)
+#define tc(t) int t; cin>>t; while(t--)
+#define sz(v) int((v).size())
+#define pb push_back
 
-void heapify(int arr[],int n,int i)
-{
-    int largest = i; //as root
-    int l = 2*i;
-    int r = 2*i + 1;
-
-    if(l < n && arr[l] > arr[largest])
-    {
-        largest = l;
+// vector<int>arr;
+//The below function is for a single node in a tree
+void max_heapify(int n, int i,vector<int>&arr) {
+    // arr.resize(n);
+    int left = 2*i;
+    int right = 2*i+1;
+    int largest;
+    if(left<=n && arr[i]<arr[left]) {
+        largest = left; //Child cannot be bigger than the parent
     }
-    else if ( r < n && arr[r] > arr[largest])
-    {
-        largest = r;
+    else {
+        largest = i; //Works
     }
-    if(largest != i)
-    {
-        swap(arr[i],arr[largest]);
-        heapify(arr,n,largest);
+    if(right<=n && arr[largest]<arr[right]) { //Checking if the left one is smaller than right if largest = left
+        largest = right;
+    }
+    if(largest != i) { //The heap property violated
+        swap(arr[largest],arr[i]);
+        max_heapify(n,largest,arr); //Go into recursion for other nodes
     }
 }
 
-void heapsort(int arr[], int n)
-{
-    for(int i = floor(n/2); i>=0;i--)
-    {
-        heapify(arr,n,i);
-    }
-    for(int i = n - 1; i>=0; i--)
-    {
-        swap(arr[0],arr[i]);
-        heapify(arr,i,0);
+void build_max_heap(vector<int>&arr) {
+    int n = arr.size();
+    for(int i = n/2;i>=1;i--) {
+        max_heapify(n,i,arr);
     }
 }
 
-void printArray(int arr[], int n) 
-{ 
-    for (int i=0; i<n; ++i) 
-        cout << arr[i] << " "; 
-    cout << "\n"; 
-} 
-  
-// Driver program 
-int main() 
-{ 
-    int arr[] = {12, 11, 13, 5, 6, 7}; 
-    int n = sizeof(arr)/sizeof(arr[0]); 
-  
-    heapsort(arr, n); 
-  
-    cout << "Sorted array is \n"; 
-    printArray(arr, n); 
-} 
+void heapsort(vector<int>&arr) {
+    int sz = arr.size();
+    build_max_heap(arr);
+    for(int i = sz;i>=2;i--) {
+        swap(arr[1],arr[i]);
+        sz -= 1;
+        max_heapify(sz,1,arr);
+    }
+}
+
+int main() {
+    vector<int>arr = {-1,4,3,7,1,8,5};
+    heapsort(arr);
+    for(int x : arr) {
+        cout<<x<<" ";
+    }
+    //val >=child && val<root    
+    return 0;
+}

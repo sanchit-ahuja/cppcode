@@ -43,16 +43,30 @@ using namespace std;
 
 // }
 
-bool dfs(int v,vector<int>&color) {
+// bool dfs(int v,vector<int>&color) {
+//     color[v] = 1;
+//     for(int u : adj[v]) {
+//         if(dfs(u,color)) {
+//             return true;
+//         }
+//         else if(color[u] == 1) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+
+bool dfs(int v, vector<int>&color) {
     color[v] = 1;
     for(int u : adj[v]) {
         if(dfs(u,color)) {
             return true;
         }
-        else if(color[u] == 1) {
+        else if(color[u]==1) {
             return true;
         }
     }
+    color[v] = 2;
     return false;
 }
 
