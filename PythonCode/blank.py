@@ -25,3 +25,5 @@ for n1 in three_dig_seq:
             list_palindromes.append(int(number))
  
 print max(list_palindromes)
+if __name__ == "__main__":
+    pass

@@ -14,7 +14,7 @@ void topologicalutil(int v,bool visited[], stack<int> &s)
     for(int i = 0;i<adj[v].size();i++)
     {
         if(visited[i] == false)
-        {
+        {   
             topologicalutil(adj[v][i],visited,s);
         }
     }

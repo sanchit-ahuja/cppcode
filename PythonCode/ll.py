@@ -84,3 +84,5 @@ if __name__ == '__main__':
     # llist.deleteNode(4)
     llist.deletePos(0)
     llist.printlist()
+
+# class Node:
