@@ -53,3 +53,13 @@ int main()
     addedge(3,1);
     topsort();
 }
+
+void dfs(int v, vector<int>&vis, vector<int>*adj,vector<int>&order) {
+    vis[v] = true;
+    for(int u : adj[v]) {
+        if(!vis[u]) {
+            dfs(u,vis,adj,order);
+        }
+    }
+    order.push_back(v);
+}

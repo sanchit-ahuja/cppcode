@@ -16,8 +16,8 @@ using namespace std;
 
 
 
-
 int main() {
+    IOS
     vector<int>nums = {10,9,2,5,3,7,101,18};
     int n = nums.size();
     vector<int>len(n,1),parent(n,-1),d(n,1);
@@ -55,6 +55,7 @@ int main() {
     for(int u : subs) {
         cout<<u<<" ";
     }
+    cout<<endl;
     // cout<<*max_element(len.begin(),len.end())<<endl;    
     return 0;
 }

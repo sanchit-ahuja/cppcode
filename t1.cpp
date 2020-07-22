@@ -14,30 +14,15 @@ using namespace std;
 #define pb push_back
 
 int main() {
-    int n,m;
-    cin>>n>>m;
-    map<int,int>umap;
+    int n;
+    cin>>n;
+    vector<int>dp(n+1,INT_MAX);
+    dp[0] = 0;
     for(int i = 1;i<=n;i++) {
-        int a, b;
-        cin>>a>>b; //b = packet number
-        if(umap.count(b)) {
-            if(a>umap[b]) {
-                umap[b]= a;
-                continue;
-            }
-            else {
-                continue;
-            }
+        for(char c: to_string(i)) {
+            dp[i] = min(dp[i],1+dp[i-(c-'0')]);
         }
-        umap[b]= a;
-        
     }
-    int cnt = 0;
-    for(auto x : umap) {
-        cnt+=x.second;
-        // cout<<x.first<<x.second<<endl;
-        // cout<<x.second.first<<" "<<x.second.second<<endl;
-    }
-    cout<<cnt<<endl;
+    cout<<dp.back()<<endl;    
     return 0;
 }
