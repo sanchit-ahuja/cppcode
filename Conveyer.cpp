@@ -14,7 +14,7 @@ using namespace std;
 #define pb push_back
 
 int main() {
-
+    // Main idea is that after a long time the values would get stuck around RL border
     string s;
     cin>>s;
     int n = s.size();
