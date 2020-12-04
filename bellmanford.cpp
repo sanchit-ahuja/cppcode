@@ -12,22 +12,38 @@ using namespace std;
 #define tc(t) int t; cin>>t; while(t--)
 #define sz(v) int((v).size())
 #define pb push_back
-
+struct Edge {
+    int u,v,wt;
+};
+const int INF  =  1e+9;
 int main() {
-    int n = 5;
-    int INF = 1e+9;
-    vector<vector<pair<int,int>>>adj(n);
-    vector<int>dist(n,INF);
-    dist[0] = 0;
+    
+    int n,m;
+    cin>>n>>m;
+    int k = m;
+    vector<Edge>edges;
+    while(k--) {
+        Edge e1;
+        cin>>e1.u>>e1.v>>e1.wt;
+        edges.pb(e1);
+    }
+    vector<int>d(n,INF);
+    d[0] = 0;
+    bool any = false;
     for(int i = 0;i<n-1;i++) {
-        for(auto u : adj[i]) {
-            if(dist[i] + u.second < dist[u.first]) {
-                dist[u.first] = dist[i] + u.second;
+        for(int j = 0;j<m;j++) {
+            if(d[edges[j].u] < INF) { //Needed for negative wt edges
+                if(d[edges[j].v] > d[edges[j].u] + edges[j].wt) {
+                    any = true;
+                    d[edges[j].v] = d[edges[j].u] + edges[j].wt;
+                }
             }
         }
+        if(!any) break;
     }
-    for(int i = 0;i<n-1;i++) {
-        
-    }    
+    for(auto x : d) {
+        cout<<x<<" ";
+    }
+    cout<<endl;
     return 0;
 }

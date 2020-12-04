@@ -19,6 +19,20 @@ void sieve(int n){
 
 }
 
+vector<int>sieve(int n, int a = 2) {
+    vector<int>ans;
+    vector<bool>prime(n+1,true);
+    for(int p = 2;p*p<=n;p++) {
+        if(prime[p] == true) {
+            ans.push_back(p);
+            for(int i = p*p;i<=n;i+=p) {
+                prime[i] = false;
+            }
+        }
+    }
+    return ans;
+}
+
 // vector<int>sieve(int n) {
 //     vector<int>ans;
 //     vector<bool>prime(n,true);

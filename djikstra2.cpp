@@ -76,3 +76,9 @@ int main() {
         }
     }
  */
+/* 
+1. Need dist arr
+2. Need priority queue
+3. BFS
+
+ */

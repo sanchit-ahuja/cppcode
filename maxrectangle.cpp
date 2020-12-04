@@ -46,7 +46,7 @@ int main() {
                     temp = max(val,temp);
 
             }
-            cout<<temp<<'f'<<endl;
+            cout<<temp<<"temp"<<endl;
             ans = max(ans,temp); 
         }
     }

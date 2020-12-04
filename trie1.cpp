@@ -1,71 +1,45 @@
 #include<bits/stdc++.h>
 using namespace std;
 const int ALPHABET_SIZE = 26;
-class TrieNode{
+class TrieNode {
     public:
         TrieNode *children[ALPHABET_SIZE];
-        bool endofword;
+        bool isend;
+    
 };
 
-//Creates a new TrieNode
-// TrieNode *getNode()
-// {
-//     TrieNode *pnode = new TrieNode;
-//     pnode->endofword = false;
-//     for(int i = 0; i<ALPHABET_SIZE;i++)
-//     {
-//         pnode->children[i] = NULL;
-//     }
-//     return pnode;
-// }
-
-TrieNode *getNode() {
-    TrieNode* pnode = new TrieNode();
-    pnode->endofword = false;
-    for(int i =0;i<ALPHABET_SIZE;i++) {
-        pnode->children[i] = NULL;
+TrieNode * getNode() {
+    TrieNode* node = new TrieNode();
+    node->isend = false;
+    for(int i = 0;i<ALPHABET_SIZE;i++) {
+        node->children[i] = NULL;
     }
-    return pnode;
-
+    return node;
 }
 
-// void insert(TrieNode* root, string key)
-// {
-//     TrieNode* crawl = root; //temp pointer to root
-//     for(int i = 0;i <key.length();i++)
-//     {
-//         int index = key[i] - 'a'; //get the index of the char to be entered. Here we are just creating a reference to prove that a character exists.
-//         if(crawl->children[index] == NULL)
-//         {
-//             crawl->children[index] = getNode(); //let say index = 1 or b. This means that there exist a reference to b at this location/
-
-//         }
-//         crawl = crawl->children[index]; //Going to the next child
-//     }
-//     crawl->endofword = true;
-// }
-void insert(TrieNode* root, string key) {
-    TrieNode* curr =root;
-    for(char x:key) {
+void insert(string word, TrieNode* node) {
+    TrieNode* curr = node;
+    for(char x : word) {
         if(curr->children[x-'a'] == NULL) {
-            curr->children[x - 'a'] = getNode();
+            curr->children[x-'a'] = getNode();
         }
         curr = curr->children[x-'a'];
     }
-    curr->endofword = true;
+    curr->isend = true;
 }
 
-
-bool search(TrieNode* root, string key) {
-    TrieNode* temp = root;
-    for(char x : key) {
-        if(temp->children[x-'a'] == NULL) {
+bool search(string word, TrieNode* node) {
+    TrieNode* temp = node;
+    for(char x : word) {
+        if(!temp->children[x-'a']) {
             return false;
         }
         temp = temp->children[x-'a'];
     }
-    return temp->endofword;
+    return temp->isend;
 }
+
+
 
 int countchild(TrieNode* root, int &index)
 {
@@ -82,7 +56,12 @@ int countchild(TrieNode* root, int &index)
 
 int main()
 {
-    char x = '13';
-    cout<<-2/2<<endl;
-    return 0;
+    deque<char>dq;
+    dq.push_front('a');
+    dq.push_front('d');
+    dq.push_front('f');
+    dq.push_front('g');
+    for(char x : dq) {
+        cout<<x<<endl;
+    }
 }

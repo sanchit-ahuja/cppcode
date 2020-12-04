@@ -8,7 +8,7 @@ int main() {
    int k = 5;
    for(int i = 0;i<k;i++) {
        windo_sum += temp[i];
-   }
+   
    for(int i = k;i<temp.size();i++) {
        windo_sum += temp[i] - temp[i-k];
        max_sum = max(windo_sum,max_sum);

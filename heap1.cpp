@@ -19,13 +19,11 @@ void max_heapify(int n, int i,vector<int>&arr) {
     // arr.resize(n);
     int left = 2*i;
     int right = 2*i+1;
-    int largest;
+    int largest = i;
     if(left<=n && arr[i]<arr[left]) {
         largest = left; //Child cannot be bigger than the parent
     }
-    else {
-        largest = i; //Works
-    }
+    
     if(right<=n && arr[largest]<arr[right]) { //Checking if the left one is smaller than right if largest = left
         largest = right;
     }
@@ -58,23 +56,9 @@ int main() {
     for(int x : arr) {
         cout<<x<<" ";
     }
+    cout<<endl;
     //val >=child && val<root    
     return 0;
 }
 
 //
-void max_heap(vector<int>&a, int i) {
-    int left = 2*i;
-    int right = 2*i+1;
-    int largest = i;
-    if(left<=a.size() && a[i]<a[left]) {
-        largest = left;
-    }
-    if(right<=a.size() && a[i]<a[right]) {
-        largest = right;
-    }
-    if(largest != i) {
-        swap(a[i],a[largest]);
-        max_heap(a,largest);
-    }
-}
